@@ -14,11 +14,12 @@ public class _00_1D_Array_Methods {
     //2. Complete the method so that it returns the average of all
     //   of the integers in the array being passed in
     public static double averageIntArray(int[] values) {
-        int sum = 0;
-        for (int value : values) {
+        double sum = 0;
+        for (double value : values) {
             sum += value;
         }
-        return sum / values.length;
+        double average = sum / values.length;
+        return average;
     }
 
 
@@ -44,6 +45,7 @@ public class _00_1D_Array_Methods {
         for(int i = 0; i<arr.length; i++){
             if (arr[i] == value){
                 index = i;
+                return index;
             }
             else {
                 index = -1;
