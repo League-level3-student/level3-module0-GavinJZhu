@@ -12,11 +12,18 @@ public class MoreArrayFun {
         strings[2] = "c";
         strings[3] = "d";
         strings[4] = "e";
-
+        printStrings(strings);
+        System.out.println("----");
+        printStringsReverse(strings);
+        System.out.println("----");
+        printEveryOtherString(strings);
+        System.out.println("----");
+        printRandomString(strings);
+        System.out.println("----");
     }
 
     //2. Write a method that takes an array of Strings and prints all the Strings in the array.
-    public void printStrings(String[] strings){
+    public static void printStrings(String[] strings){
         for(String string : strings){
             System.out.println(string);
         }
@@ -24,7 +31,7 @@ public class MoreArrayFun {
 
     //3. Write a method that takes an array of Strings and prints all the Strings in the array
     //   in reverse order.
-    public void printStringsReverse(String[] strings){
+    public static void printStringsReverse(String[] strings){
         for(int i = strings.length; i>0; i--){
             System.out.println(strings[i-1]);
         }
@@ -32,18 +39,18 @@ public class MoreArrayFun {
 
 
     //4. Write a method that takes an array of Strings and prints every other String in the array.
-    public void printEveryOtherString(String[] strings){
-        for(int i = 0; i< strings.length; i++){
-            System.out.println(strings[i*2]);
+    public static void printEveryOtherString(String[] strings){
+        for(int i = 0; i< strings.length; i+=2){
+            System.out.println(strings[i]);
         }
     }
 
     //5. Write a method that takes an array of Strings and prints all the Strings in the array
     //   in a completely random order. Almost every run of the program should result in a different order.
-    public void printRandomString(String[] strings){
+    public static void printRandomString(String[] strings){
         Random ran = new Random();
-        int random = ran.nextInt((strings.length)-1);
         for(int i = 0; i< strings.length; i++){
+            int random = ran.nextInt(strings.length);
             System.out.println(strings[random]);
         }
     }
