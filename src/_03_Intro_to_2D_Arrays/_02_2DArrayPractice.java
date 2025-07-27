@@ -31,18 +31,18 @@ public class _02_2DArrayPractice {
      *          6, 7, 8
      */
     public Integer[][] test1() {
-        
-        return null;
+        Integer[][] intGrid = new Integer[3][3];
+        return intGrid;
     }
-    
+    String[][] stringGrid = new String[2][4];
     /*
      * Return a 2D array that can accommodate the grid of values below:
      *          "a", "b", "c", "d",
      *          "e", "f", "g", "e"
      */
     public String[][] test2() {
-        
-        return null;
+        String[][] stringGrid = new String[2][4];
+        return stringGrid;
     }
     
     /*
@@ -54,8 +54,8 @@ public class _02_2DArrayPractice {
      *          true, false
      */
     public Boolean[][] test3() {
-        
-        return null;
+        Boolean[][] booleanGrid = new Boolean[5][2];
+        return booleanGrid;
     }
     
     /*
@@ -68,7 +68,7 @@ public class _02_2DArrayPractice {
      * 
      * Show your teacher the grid you created
      */
-    
+
     /*
      * Draw the grid of values for the following 2D array of Robots
      * Assume all the elements in the 2D array are initialized.
