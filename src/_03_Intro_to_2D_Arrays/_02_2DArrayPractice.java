@@ -1,5 +1,9 @@
 package _03_Intro_to_2D_Arrays;
 
+import org.jointheleague.graphical.robot.Robot;
+
+import java.util.Random;
+
 /*
  *  A 2D array is comparable to a matrix/grid ordered by rows and columns.
  *  A 2D array that holds 3, 1D arrays with each 1D array having 3 elements
@@ -30,6 +34,10 @@ public class _02_2DArrayPractice {
      *          3, 4, 5
      *          6, 7, 8
      */
+    public static void main(String[] args) {
+        fillIn2DArray();
+        fillIn2DArray2();
+    }
     public Integer[][] test1() {
         Integer[][] intGrid = new Integer[3][3];
         return intGrid;
@@ -60,14 +68,31 @@ public class _02_2DArrayPractice {
     
     /*
      * Draw the grid of values for the following 2D array of ints:
-     * Assume all the elements in the 2D array are initialized to random ints
-     * 
+     * Fill in the 2D array with random integers
+     *
      * int[][] grid = new int[2][3];
      * 
      * 
      * 
      * Show your teacher the grid you created
      */
+    static int[][] grid = new int[2][3];
+    static Random rand = new Random();
+    public static void fillIn2DArray(){
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                int ran = rand.nextInt(9);
+                grid[i][j] = ran;
+            }
+        }
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                System.out.print(grid[i][j] + ", ");
+            }
+            System.out.println();
+        }
+    }
+
 
     /*
      * Draw the grid of values for the following 2D array of Robots
@@ -79,14 +104,28 @@ public class _02_2DArrayPractice {
      * 
      * Show your teacher the grid you created
      */
-    
+    static Robot[][] robots = new Robot[4][2];
+    public static void fillIn2DArray2(){
+        for (int i = 0; i < robots.length; i++) {
+            for (int j = 0; j < robots[i].length; j++) {
+                System.out.print(robots[i][j] + ", ");
+            }
+            System.out.println();
+        }
+    }
     /* Given the array of Objects below, return the element that is not null
      *          null, null, null, null
      *          null, null, null, Object
      */
     public Object test4() {
         Object[][] objects = { {null, null, null, null}, {null, null, null, new Object()} };
-        
+        for (int i = 0; i < objects.length; i++) {
+            for (int j = 0; j < objects[0].length; j++) {
+                if (objects[i][j] != null){
+                    return objects[i][j];
+                }
+            }
+        }
         return null;
     }
     
@@ -96,7 +135,13 @@ public class _02_2DArrayPractice {
      */
     public Object test5() {
         Object[][] objects = { {null, null, new Object(), null}, {null, null, null, null} };
-        
+        for (int i = 0; i < objects.length; i++) {
+            for (int j = 0; j < objects[0].length; j++) {
+                if (objects[i][j] != null){
+                    return objects[i][j];
+                }
+            }
+        }
         return null;
     }
     
@@ -106,8 +151,11 @@ public class _02_2DArrayPractice {
      */
     public Integer test6() {
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
-        
-        return null;
+        int sum = 0;
+        for (int i = 0; i<nums[0].length; i++) {
+            sum += nums[0][i];
+        }
+        return sum;
     }
     
     /*
@@ -116,8 +164,11 @@ public class _02_2DArrayPractice {
      */
     public Integer test7() {
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
-        
-        return null;
+        int sum = 0;
+        for (int i = 0; i<nums.length; i++) {
+            sum += nums[i][0];
+        }
+        return sum;
     }
     
     /*
@@ -125,8 +176,11 @@ public class _02_2DArrayPractice {
      * specified row
      */
     public Integer getSumByRow(int[][] matrix, int row) {
-        
-        return null;
+        int sum = 0;
+        for (int i = 0; i<matrix[row].length; i++) {
+            sum += matrix[row][i];
+        }
+        return sum;
     }
     
     /*
@@ -134,8 +188,11 @@ public class _02_2DArrayPractice {
      * specified column
      */
     public Integer getSumByColumn(int[][] matrix, int col) {
-        
-        return null;
+        int sum = 0;
+        for (int i = 0; i<matrix.length; i++) {
+            sum += matrix[i][col];
+        }
+        return sum;
     }
     
     /*
@@ -158,22 +215,48 @@ public class _02_2DArrayPractice {
      *    boundaries, return null.
      */
     public Integer getEastNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+        Integer value = null;
+
+        int rowMax = 99;  // TBD
+        int colMax = 99;  // TBD
+
+        if ( ( row <0 ) && ( row > rowMax-1))
+        {
+            // bad row index
+            // TBD.  SYSO the index.
+        }
+        else if (( col < 0 ) && ( col > colMax-1))
+        {
+            // bad col index
+            // TBD.  SYSO the index.
+        }
+        else
+        {
+           int east = row + 1;
+           if (east > rowMax-1 )
+           {
+               // bad east index
+               // TBD.  SYSO the index.
+           }
+           else
+           {
+               // Return East Value...TBD
+               // ie set value = ???
+           }
+
+        }
+        return  value;
     }
     
     public Integer getWestNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+        return matrix[row-1][col];
     }
     
     public Integer getNorthNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+        return matrix[row][col-1];
     }
     
     public Integer getSouthNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+        return matrix[row][col+1];
     }
 }
