@@ -215,48 +215,42 @@ public class _02_2DArrayPractice {
      *    boundaries, return null.
      */
     public Integer getEastNeighbor(int[][] matrix, int row, int col) {
-        Integer value = null;
-
-        int rowMax = 99;  // TBD
-        int colMax = 99;  // TBD
-
-        if ( ( row <0 ) && ( row > rowMax-1))
-        {
-            // bad row index
-            // TBD.  SYSO the index.
+        int eastCol = col+1;
+        if (eastCol>=matrix[row].length || eastCol<0 || row>=matrix.length || row<0){
+            return null;
         }
-        else if (( col < 0 ) && ( col > colMax-1))
-        {
-            // bad col index
-            // TBD.  SYSO the index.
+        else{
+            return matrix[row][eastCol];
         }
-        else
-        {
-           int east = row + 1;
-           if (east > rowMax-1 )
-           {
-               // bad east index
-               // TBD.  SYSO the index.
-           }
-           else
-           {
-               // Return East Value...TBD
-               // ie set value = ???
-           }
-
-        }
-        return  value;
     }
     
     public Integer getWestNeighbor(int[][] matrix, int row, int col) {
-        return matrix[row-1][col];
+        int westCol = col-1;
+        if (westCol>=matrix[row].length || westCol<0 || row>=matrix.length || row<0){
+            return null;
+        }
+        else{
+            return matrix[row][westCol];
+        }
     }
     
     public Integer getNorthNeighbor(int[][] matrix, int row, int col) {
-        return matrix[row][col-1];
+        int northRow = row-1;
+        if (northRow>=matrix.length || northRow<0 || col>=matrix[row].length || col<0){
+            return null;
+        }
+        else{
+            return matrix[northRow][col];
+        }
     }
     
     public Integer getSouthNeighbor(int[][] matrix, int row, int col) {
-        return matrix[row][col+1];
+        int southRow = row+1;
+        if (southRow>=matrix.length || southRow<0 || col>=matrix[row].length || col<0){
+            return null;
+        }
+        else{
+            return matrix[southRow][col];
+        }
     }
 }
