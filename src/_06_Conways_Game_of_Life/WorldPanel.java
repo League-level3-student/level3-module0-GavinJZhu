@@ -26,8 +26,9 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 
         // 2. Calculate the cell size.
         cellSize = w/cpr;
+        System.out.println("cellSize = "+cellSize);
         // 3a. Initialize the cell array to the appropriate size.
-        cells = new Cell[cellSize][cellSize];
+        cells = new Cell[cpr][cpr];
         // 3b. Iterate through the array and initialize each cell.
         //    Don't forget to consider the cell's dimensions when 
         //    passing in the location.
@@ -115,30 +116,33 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     //        6   7    8
     public int getLivingNeighbors(Cell[][] cells, int cellRow, int cellCol){
         int livingNeighbors = 0;
-        
-        if(cellRow != 0) {
+        //check north cell
+        //if not top row
+        if(cellRow > 0) {
             if(cells[cellRow - 1][cellCol].isAlive) livingNeighbors++;
         }
-        
-        if(cellRow != cellsPerRow - 1) {
+        //check south cell
+
+        if(cellRow < cellsPerRow - 1) {
             if(cells[cellRow + 1][cellCol].isAlive) livingNeighbors++;
         }
-        if(cellCol != 0) {
+        if(cellCol > 0) {
             if(cells[cellRow][cellCol - 1].isAlive) livingNeighbors++;
         }
-        if(cellCol != cellsPerRow - 1) {
+        //bug
+        if(cellCol < cellsPerRow - 1) {
             if(cells[cellRow][cellCol + 1].isAlive) livingNeighbors++;
         }
-        if(cellRow != 0 && cellCol != 0) {
+        if(cellRow > 0 && cellCol > 0) {
             if(cells[cellRow - 1][cellCol - 1].isAlive) livingNeighbors++;
         }
-        if(cellRow != cellsPerRow - 1 && cellCol != cellsPerRow - 1) {
+        if(cellRow < cellsPerRow - 1 && cellCol < cellsPerRow - 1) {
             if(cells[cellRow + 1][cellCol + 1].isAlive) livingNeighbors++;
         }
-        if(cellRow != 0 && cellCol != cellsPerRow - 1) {
+        if(cellRow > 0 && cellCol < cellsPerRow - 1) {
             if(cells[cellRow - 1][cellCol + 1].isAlive) livingNeighbors++;
         }
-        if(cellRow != cellsPerRow - 1 && cellCol != 0) {
+        if(cellRow < cellsPerRow - 1 && cellCol > 0) {
             if(cells[cellRow + 1][cellCol - 1].isAlive) livingNeighbors++;
         }
         
