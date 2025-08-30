@@ -49,11 +49,54 @@
 package _07_The_Wrong_Way_Cow;
 
 public class TheWrongWayCow {
-
+    static int cowsNorth = 0;
+    static int cowsSouth = 0;
+    static int cowsWest = 0;
+    static int cowsEast = 0;
     public static int[] findWrongWayCow(final char[][] field) {
+        for (int i = 0; i<field.length; i++){
+            for (int j = 0; j<field[i].length; i++){
+                initiateCowInts(field, i, j);
+            }
+        }
+
         // Fill in the code to return the [col, row] coordinate position of the
         // head (letter 'c') of the wrong way cow!
-        
         return null;
+
+    }
+    public static void initiateCowInts(final char[][] location, int row, int col){
+        //check north
+        if (location[row][col] == 'c'){
+            if (location[row-1][col] == 'o'){
+                if (location[row-2][col] == 'w'){
+                    cowsNorth +=1;
+                }
+            }
+        }
+        //check south
+        if (location[row][col] == 'c'){
+            if (location[row+1][col] == 'o'){
+                if (location[row+2][col] == 'w'){
+                    cowsSouth +=1;
+                }
+            }
+        }
+        //check east
+        if (location[row][col] == 'c'){
+            if (location[row][col+1] == 'o'){
+                if (location[row][col+2] == 'w'){
+                    cowsEast +=1;
+                }
+            }
+        }
+        //check west
+        if (location[row][col] == 'c'){
+            if (location[row][col-1] == 'o'){
+                if (location[row][col-2] == 'w'){
+                    cowsWest +=1;
+                }
+            }
+        }
     }
 }
