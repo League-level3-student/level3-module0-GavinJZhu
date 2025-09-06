@@ -53,17 +53,44 @@ public class TheWrongWayCow {
     static int cowsSouth = 0;
     static int cowsWest = 0;
     static int cowsEast = 0;
+
     public static int[] findWrongWayCow(final char[][] field) {
+        int[] coordinates = new int[]{0,0};
         for (int i = 0; i<field.length; i++){
             for (int j = 0; j<field[i].length; i++){
                 initiateCowInts(field, i, j);
             }
         }
+        for (int i = 0; i<field.length; i++){
+            for (int j = 0; j<field[i].length; i++){
+                if (field[i][j] == 'c'){
+                    if(isCowFacingNorth(field, i, j) && cowsNorth==1){
+                        coordinates = new int[]{i, j};
+                        System.out.println(i+", "+j);
+                        break;
+                    }
+                    else if(isCowFacingSouth(field, i, j) && cowsSouth==1){
+                        coordinates = new int[]{i, j};
+                        System.out.println(i+", "+j);
+                        break;
+                    }
+                    else if(isCowFacingWest(field, i, j) && cowsWest==1){
+                        coordinates = new int[]{i, j};
+                        System.out.println(i+", "+j);
+                        break;
+                    }
+                    else if(isCowFacingEast(field, i, j) && cowsEast==1){
+                        coordinates = new int[]{i, j};
+                        System.out.println(i+", "+j);
+                        break;
+                    }
+                }
+            }
+        }
 
         // Fill in the code to return the [col, row] coordinate position of the
         // head (letter 'c') of the wrong way cow!
-        return null;
-
+        return coordinates;
     }
     public static void initiateCowInts(final char[][] location, int row, int col){
         //check north
@@ -98,5 +125,53 @@ public class TheWrongWayCow {
                 }
             }
         }
+    }
+    public static boolean isCowFacingNorth(final char[][] location, int row, int col){
+        //check north
+        boolean isFacingNorth = false;
+        if (location[row][col] == 'c'){
+            if (location[row-1][col] == 'o'){
+                if (location[row-2][col] == 'w'){
+                    isFacingNorth = true;
+                }
+            }
+        }
+        return isFacingNorth;
+    }
+    public static boolean isCowFacingSouth(final char[][] location, int row, int col){
+        //check south
+        boolean isFacingSouth = false;
+        if (location[row][col] == 'c'){
+            if (location[row+1][col] == 'o'){
+                if (location[row+2][col] == 'w'){
+                    isFacingSouth = true;
+                }
+            }
+        }
+        return isFacingSouth;
+    }
+    public static boolean isCowFacingEast(final char[][] location, int row, int col){
+        //check east
+        boolean isFacingEast = false;
+        if (location[row][col] == 'c'){
+            if (location[row][col+1] == 'o'){
+                if (location[row][col+2] == 'w'){
+                    isFacingEast = true;
+                }
+            }
+        }
+        return isFacingEast;
+    }
+    public static boolean isCowFacingWest(final char[][] location, int row, int col){
+        //check west
+        boolean isFacingWest = false;
+        if (location[row][col] == 'c'){
+            if (location[row][col-1] == 'o'){
+                if (location[row][col-2] == 'w'){
+                    isFacingWest = true;
+                }
+            }
+        }
+        return isFacingWest;
     }
 }
